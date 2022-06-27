@@ -9,25 +9,25 @@ class Solution {
         long num = Math.abs((long)numerator);
         long den = Math.abs((long)denominator);
         long n = num/den;
-        long reminder = num % den;
+        long remainder = num % den;
         
         sb.append(n);
-        if (reminder == 0) {
+        if (remainder == 0) {
             return sb.toString();
         } else {
             sb.append(".");
         }
         
-        while (!map.containsKey(reminder)) {
-            map.put(reminder, sb.length());
-            n = reminder * 10 / den;
-            reminder = reminder * 10 % den;
-            if (reminder != 0 || reminder == 0 && !map.containsKey(reminder))
+        while (!map.containsKey(remainder)) {
+            map.put(remainder, sb.length());
+            n = remainder * 10 / den;
+            remainder = remainder * 10 % den;
+            if (remainder != 0 || remainder == 0 && !map.containsKey(remainder))
                 sb.append(n);
         }
         
-        if (reminder != 0) {
-            sb.insert(map.get(reminder), "(");
+        if (remainder != 0) {
+            sb.insert(map.get(remainder), "(");
             sb.append(")");
         }
         
